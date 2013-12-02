@@ -1,0 +1,11 @@
+{
+    "uglify-js-arguments": "-o",
+    "scripts": [
+        "vendor/zepto.js",
+        "vendor/handlebars-v1.1.2.js",
+        "vendor/mousetrap.js",
+        "Ferret.js",
+        "init.js"
+    ],
+    "minifiedFilename": "../scripts.js"
+}

@@ -1,6 +1,6 @@
 Ferret = function () {
 
-    this.combos = []
+    this.combos = [];
 
     this.getCombinations = function (notes) {
 
@@ -8,7 +8,7 @@ Ferret = function () {
             return [];
         }
 
-        this.combos = []
+        this.combos = [];
 
         var self = this;
 
@@ -25,7 +25,7 @@ Ferret = function () {
                     note: note,
                     string: fret.data('string'),
                     fret: fret.data('fret')
-                }
+                };
 
                 if (0 === noteIndex) {
                     self.combos[noteIndex].push([poss]);
@@ -54,10 +54,10 @@ Ferret = function () {
                 return -1;
             }
             return 0;
-        })
+        });
 
-        return this.combos
-    }
+        return this.combos;
+    };
 
     this.isPlayable = function (poss, combo) {
 
@@ -102,4 +102,4 @@ Ferret = function () {
         return true;
 
     }
-}
+};
