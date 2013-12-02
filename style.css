@@ -31,23 +31,19 @@ button.show { margin-top: 20px; font-size: 18px; height: 40px; width: 435px; }
 .keys .key:first-child { border-left: 1px solid #000; }
 
 .fretboard { margin-top: 20px; }
-.fretboard .string { clear: both; }
-.fretboard .fret { float: left; width: 5%; height: 20px; line-height: 20px; text-align: center; background: #bdc3c7; margin: 0 2px 2px 0; }
-.fretboard .fret span { height: 20px; width: 20px; display: inline-block; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; font-size: 10px; line-height: 20px; text-align: center; color: #fff; }
-.fretboard .fret span.lowlight { background: #fff; }
-.fretboard .fret span.highlight { background: #f39c12; }
+.fretboard .string { width: 78%; clear: both; position: relative; }
+.fretboard .string > span.bit { display: block; position: absolute; top: 9px; width: inherit; border-bottom: 2px solid #000; border-right: 31px solid #000; z-index: 10; }
+.fretboard .string > span.bit.string6 { border-bottom: 4px solid #000; }
+.fretboard .string > span.bit.string5, .fretboard .string > span.bit.string4 { border-bottom: 3px solid #000; }
+.fretboard .string > span.bit.string1 { border-bottom: 1px solid #000; }
+.fretboard .fret { float: left; width: 5%; border-right: 2px solid #000; height: 20px; line-height: 20px; text-align: center; background: #fee9b4; background-image: url("wood.png"); position: relative; }
+.fretboard .fret span { position: relative; z-index: 1; margin-top: 1px; height: 18px; width: 18px; display: inline-block; -webkit-border-radius: 9px; -moz-border-radius: 9px; -ms-border-radius: 9px; -o-border-radius: 9px; border-radius: 9px; font-size: 10px; line-height: 20px; text-align: center; color: #fff; z-index: 20; }
+.fretboard .fret span.lowlight { background: rgba(231, 76, 60, 0.3); }
+.fretboard .fret span.highlight { background: #e67e22; -webkit-box-shadow: 0px 0px 5px 1px rgba(255, 255, 190, 0.75); -moz-box-shadow: 0px 0px 5px 1px rgba(255, 255, 190, 0.75); box-shadow: 0px 0px 5px 1px rgba(255, 255, 190, 0.75); }
 .fretboard .fret span.root { background: #e74c3c; }
-.fretboard .fret[data-fret="0"] { width: 30px; }
-.fretboard .fret[data-fret="0"] { background: #95a5a6; }
-.fretboard .fret[data-fret="3"] { background: #95a5a6; }
-.fretboard .fret[data-fret="5"] { background: #95a5a6; }
-.fretboard .fret[data-fret="7"] { background: #95a5a6; }
-.fretboard .fret[data-fret="9"] { background: #95a5a6; }
-.fretboard .fret[data-fret="12"] { background: #95a5a6; }
-.fretboard .fret[data-fret="15"] { background: #95a5a6; }
-.fretboard .fret[data-fret="17"] { background: #95a5a6; }
-.fretboard .fret[data-fret="19"] { background: #95a5a6; }
-.fretboard .fret[data-fret="22"] { background: #95a5a6; }
+.fretboard .fret[data-fret="0"] { width: 3%; border-right: 4px solid #000; }
+.fretboard .fret[data-fret="3"][data-string="3"]:after, .fretboard .fret[data-fret="5"][data-string="3"]:after, .fretboard .fret[data-fret="7"][data-string="3"]:after, .fretboard .fret[data-fret="9"][data-string="3"]:after, .fretboard .fret[data-fret="12"][data-string="1"]:after, .fretboard .fret[data-fret="12"][data-string="4"]:after, .fretboard .fret[data-fret="15"][data-string="3"]:after, .fretboard .fret[data-fret="17"][data-string="3"]:after, .fretboard .fret[data-fret="19"][data-string="3"]:after { content: ""; display: block; position: absolute; left: 50%; top: 1px; height: 18px; width: 18px; margin: 10px -10px; display: inline-block; -webkit-border-radius: 9px; -moz-border-radius: 9px; -ms-border-radius: 9px; -o-border-radius: 9px; border-radius: 9px; background: rgba(0, 0, 0, 0.1); z-index: 1; }
+.fretboard .fret[data-fret="12"][data-string="1"]:after, .fretboard .fret[data-fret="12"][data-string="4"]:after { top: 10px; }
 
 .combos { margin-top: 20px; }
 .combos li { display: inline-block; margin-right: 5px; margin-bottom: 40px; }
