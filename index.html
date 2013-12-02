@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Ferret Master</h1>
+
+<p>
+    Gain total fretboard control - Now!
+</p>
+
+<div class="keys">
+
+    <div class="key" data-note="C" data-key="81">
+        <div class="key blk" data-note="C#" data-key="50"></div>
+    </div>
+
+    <div class="key" data-note="D" data-key="87">
+        <div class="key blk" data-note="D#" data-key="51"></div>
+    </div>
+
+    <div class="key" data-note="E" data-key="69"></div>
+    <div class="key" data-note="F" data-key="82">
+        <div class="key blk" data-note="F#" data-key="52"></div>
+    </div>
+
+    <div class="key" data-note="G" data-key="">
+        <div class="key blk" data-note="G#" data-key=""></div>
+    </div>
+
+    <div class="key active" data-note="A" data-key="">
+        <div class="key blk" data-note="A#" data-key="7"></div>
+    </div>
+
+    <div class="key" data-note="B" data-key=""></div>
+
+    <div class="key active" data-note="C" data-key="">
+        <div class="key blk" data-note="C#" data-key=""></div>
+    </div>
+
+    <div class="key active" data-note="D" data-key="">
+        <div class="key blk active" data-note="D#" data-key=""></div>
+    </div>
+
+    <div class="key active" data-note="E" data-key=""></div>
+    <div class="key" data-note="F" data-key="">
+        <div class="key blk" data-note="F#" data-key=""></div>
+    </div>
+
+    <div class="key active" data-note="G" data-key="">
+        <div class="key blk" data-note="G#" data-key=""></div>
+    </div>
+
+    <div class="key active" data-note="A" data-key="">
+        <div class="key blk" data-note="A#" data-key=""></div>
+    </div>
+
+    <div class="key" data-note="B" data-key=""></div>
+</div>
+
+<div class="clear"></div>
+
+<div class="fretboard"></div>
+
+<div class="clear"></div>
+
+<ul class="combos"></ul>
+
+<script id="fretboard-template" type="text/x-handlebars-template">
+    {{#for 1 7 1}}
+    <div class="string">
+        {{#for 0 16 1}}
+        <div class="fret" data-string="{{../this}}" data-fret="{{this}}"></div>
+        {{/for}}
+    </div>
+    {{/for}}
+</script>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/handlebars-v1.1.2.js"></script>
+<script type="text/javascript" src="js/mousetrap.js"></script>
+<script type="text/javascript" src="js/Ferret.js"></script>
+<script type="text/javascript">
+
+    Handlebars.registerHelper('for', function (from, to, incr, block) {
+        var accum = '';
+        for (var i = from; i < to; i += incr)
+            accum += block.fn(i);
+        return accum;
+    });
+
+    var notes = [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B",
+        "C"
+    ];
+
+    var offsets = [0, 4, 11, 7, 2, 9, 4];
+
+    $(function () {
+
+        var ferret = new Ferret();
+        var combos;
+
+        $('.fretboard').html(Handlebars.compile($("#fretboard-template").html()));
+
+        //populate fret note-attributes
+        $('.fret').each(function () {
+            $(this).attr('data-note', function () {
+                var offset = offsets[$(this).data('string')];
+                var index = (offset + $(this).data('fret')) % 12
+                return notes[index];
+            });
+        });
+
+        //piano keys change
+        $('.keys .key').on('click', function (e) {
+            e.stopPropagation();
+            $(this).toggleClass('active');
+            showCombos();
+        });
+
+        function showCombos() {
+            $('.fret span').remove();
+
+            //get notes from active keys
+            var notes = [];
+            $('.keys .key.active').each(function () {
+                notes.push($(this).data('note'));
+            });
+
+            //get playable combinations
+            combos = ferret.getCombinations(notes);
+
+            $('ul.combos').html('');
+            $(combos).each(function (index, val) {
+                $('<li><button data-index="' + index + '"></button></li>').appendTo($('ul.combos'));
+            });
+            $('ul.combos li:first-child button').click();
+
+
+        }
+
+        $('ul.combos').on('click', 'button', function (e) {
+            $('ul.combos button').removeClass('active');
+            $(this).addClass('active');
+            showCombo($(this).data('index'));
+        });
+
+        function showCombo(index) {
+            $('.fret span').remove();
+
+            var root = combos[index][0];
+
+            $('<span/>')
+                    .addClass('lowlight')
+                    .appendTo($('.fret[data-note="' + root.note + '"'));
+
+
+            $(combos[index]).each(function () {
+
+                var span = $('<span></span>')
+                        .addClass('highlight');
+
+                if (this.note == root.note) {
+                    span.addClass('root');
+                }
+
+                $('.fret[data-fret="' + this.fret + '"][data-string="' + this.string + '"]')
+                        .html('')
+                        .append(span);
+
+            });
+        }
+
+
+        $(document).on('keydown', function (e) {
+//            console.log(e.which);
+            $('.keys .key[data-key="' + e.which + '"]').click();
+        });
+
+        Mousetrap.bind(['right'], function (e) {
+            $('.combos button').each(function (key, val) {
+                if ($(this).hasClass('active')) {
+                    if ($('.combos button')[key + 1]) {
+                        $('.combos button')[key + 1].click();
+                    }
+                    else {
+                        $('.combos button').first().click();
+                    }
+                    return false;
+                }
+            });
+        });
+
+        Mousetrap.bind(['left'], function (e) {
+            $('.combos button').each(function (key, val) {
+                if ($(this).hasClass('active')) {
+                    if ($('.combos button')[key - 1]) {
+                        $('.combos button')[key - 1].click();
+                    }
+                    else {
+                        $('.combos button').last().click();
+                    }
+                    return false;
+                }
+            });
+        });
+
+        showCombos();
+
+    });
+
+
+</script>
+</body>
+</html>
