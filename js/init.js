@@ -67,7 +67,8 @@ $(function () {
 
     }
 
-    $('ul.combos').on('click', 'button', function () {
+    $('ul.combos').on('click', 'button', function (e) {
+        e.preventDefault();
         $('ul.combos button').removeClass('active');
         $(this).addClass('active');
         showCombo($(this).data('index'));
@@ -99,9 +100,7 @@ $(function () {
         });
     }
 
-
     $(document).on('keydown', function (e) {
-//            console.log(e.which);
         $('.keys .key[data-key="' + e.which + '"]').click();
     });
 
