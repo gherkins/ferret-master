@@ -81,7 +81,7 @@ $(function () {
 
         $('<span/>')
             .addClass('lowlight')
-            .appendTo($('.fret[data-note="' + root.note + '"'));
+            .appendTo($('.fret[data-note="' + root.note + '"]'));
 
 
         $(combos[index]).each(function () {
