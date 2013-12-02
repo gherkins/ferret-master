@@ -245,3 +245,13 @@ p {
   margin-bottom: 20px;
   line-height: 20px;
 }
+
+#share{
+  float: right;
+
+  & .button{
+    float: left;
+    margin-left: 10px;
+  }
+
+}

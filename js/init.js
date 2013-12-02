@@ -130,3 +130,30 @@ $(function () {
 
 });
 
+
+$(function () {
+    $('#share').sharrre({
+        share: {
+            googlePlus: true,
+            facebook: true,
+            twitter: true
+        },
+        buttons: {
+            googlePlus: {
+                size: 'tall',
+                annotation: 'bubble'
+            },
+            facebook: {
+                layout: 'box_count'
+            },
+            twitter: {
+                count: 'vertical'
+            }
+        },
+        url: 'http://web-development.cc/ferret-master/',
+        enableHover: true,
+        enableCounter: false,
+        enableTracking: false
+    });
+});
+

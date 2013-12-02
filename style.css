@@ -58,3 +58,6 @@ h1, h2 { font-size: 30px; font-weight: bold; text-transform: uppercase; color: #
 h2 { text-transform: none; font-size: 18px; font-weight: normal; }
 
 p { color: #fff; margin-bottom: 20px; line-height: 20px; }
+
+#share { float: right; }
+#share .button { float: left; margin-left: 10px; }
