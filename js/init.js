@@ -34,7 +34,7 @@ $(function () {
     $('.fret').each(function () {
         $(this).attr('data-note', function () {
             var offset = offsets[$(this).data('string')];
-            var index = (offset + $(this).data('fret')) % 12
+            var index = (offset + $(this).data('fret')) % 12;
             return notes[index];
         });
     });
@@ -59,7 +59,7 @@ $(function () {
         combos = ferret.getCombinations(notes);
 
         $('ul.combos').html('');
-        $(combos).each(function (index, val) {
+        $(combos).each(function (index) {
             $('<li><button data-index="' + index + '"></button></li>').appendTo($('ul.combos'));
         });
         $('ul.combos li:first-child button').click();
@@ -67,7 +67,7 @@ $(function () {
 
     }
 
-    $('ul.combos').on('click', 'button', function (e) {
+    $('ul.combos').on('click', 'button', function () {
         $('ul.combos button').removeClass('active');
         $(this).addClass('active');
         showCombo($(this).data('index'));
@@ -105,35 +105,39 @@ $(function () {
         $('.keys .key[data-key="' + e.which + '"]').click();
     });
 
-    Mousetrap.bind(['right'], function (e) {
-        $('.combos button').each(function (key, val) {
+    Mousetrap.bind(['right'], function () {
+        $('.combos button').each(function (key) {
             if ($(this).hasClass('active')) {
-                if ($('.combos button')[key + 1]) {
-                    $('.combos button')[key + 1].click();
+                var buttons = $('.combos button');
+                if (buttons[key + 1]) {
+                    buttons[key + 1].click();
                 }
                 else {
-                    $('.combos button').first().click();
+                    buttons.first().click();
                 }
                 return false;
             }
+            return true;
         });
     });
 
-    Mousetrap.bind(['left'], function (e) {
-        $('.combos button').each(function (key, val) {
+    Mousetrap.bind(['left'], function () {
+        $('.combos button').each(function (key) {
             if ($(this).hasClass('active')) {
-                if ($('.combos button')[key - 1]) {
-                    $('.combos button')[key - 1].click();
+                var buttons = $('.combos button');
+                if (buttons[key - 1]) {
+                    buttons[key - 1].click();
                 }
                 else {
-                    $('.combos button').last().click();
+                    buttons.last().click();
                 }
                 return false;
             }
+            return true;
         });
     });
 
-    Mousetrap.bind(['esc'], function (e) {
+    Mousetrap.bind(['esc'], function () {
         $('.keys .key').removeClass('active');
         showCombos();
     });
