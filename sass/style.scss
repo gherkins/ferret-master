@@ -136,12 +136,15 @@ button.show {
 
   & li {
     float: left;
+    margin-right: 5px;
     margin-bottom: 40px;
 
     & button {
       border: none;
       padding: 15px;
       outline: none;
+      margin: 0;
+      background: #bdc3c7;
 
       &:hover {
         cursor: pointer;
