@@ -5,21 +5,6 @@ Handlebars.registerHelper('for', function (from, to, incr, block) {
     return accum;
 });
 
-var notes = [
-    "C",
-    "C#",
-    "D",
-    "D#",
-    "E",
-    "F",
-    "F#",
-    "G",
-    "G#",
-    "A",
-    "A#",
-    "B",
-    "C"
-];
 
 var offsets = [0, 4, 11, 7, 2, 9, 4];
 
@@ -35,7 +20,7 @@ $(function () {
         $(this).attr('data-note', function () {
             var offset = offsets[$(this).data('string')];
             var index = (offset + $(this).data('fret')) % 12;
-            return notes[index];
+            return ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C"][index];
         });
     });
 
@@ -60,7 +45,7 @@ $(function () {
 
         $('ul.combos').html('');
         $(combos).each(function (index) {
-            $('<li><button data-index="' + index + '">'+(index + 1)+'</button></li>').appendTo($('ul.combos'));
+            $('<li><button data-index="' + index + '">' + (index + 1) + '</button></li>').appendTo($('ul.combos'));
         });
         $('ul.combos li:first-child button').click();
 

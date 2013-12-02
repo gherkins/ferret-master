@@ -69,14 +69,19 @@ Ferret = function () {
             return false;
         }
 
-        //more than 3 frets away from last poss
-        if (poss.fret - last.fret < -4 || poss.fret - last.fret > 4) {
-            return false;
-        }
+        //restrict movement, if not on last string
+        if (1 !== poss.string) {
 
-        //more than 3 frets away from root
-        if (poss.fret - root.fret < -3 || poss.fret - root.fret > 3) {
-            return false;
+            //more than 3 frets away from last poss
+            if (poss.fret - last.fret < -4 || poss.fret - last.fret > 4) {
+                return false;
+            }
+
+            //more than 3 frets away from root
+            if (poss.fret - root.fret < -3 || poss.fret - root.fret > 3) {
+                return false;
+            }
+            
         }
 
         //skips more than 2 strings
