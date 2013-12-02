@@ -91,19 +91,19 @@ button.show {
       position: absolute;
       top: 9px;
       width: inherit;
-      border-bottom: 2px solid #000;
-      border-right: 31px solid #000;
+      border-bottom: 2px solid #7f8c8d;
+      border-right: 32px solid #7f8c8d;
       z-index:10;
 
       &.string6 {
-        border-bottom: 4px solid #000;
+        border-bottom: 4px solid #7f8c8d;
       }
       &.string5,
       &.string4 {
-        border-bottom: 3px solid #000;
+        border-bottom: 3px solid #7f8c8d;
       }
       &.string1 {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #7f8c8d;
       }
 
     }
@@ -113,7 +113,7 @@ button.show {
   & .fret {
     float: left;
     width: 5%;
-    border-right: 2px solid #000;
+    border-right: 2px solid #2c3e50;
     height: 20px;
     line-height: 20px;
     text-align: center;
@@ -153,6 +153,7 @@ button.show {
     &[data-fret="0"] {
       width: 3%;
       border-right: 4px solid #000;
+      background: #34495e;
     }
 
     &[data-fret="3"][data-string="3"],
