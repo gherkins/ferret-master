@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
 @import "compass/reset";
 @import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
 @import "compass/css3/opacity";
 @import "compass/css3/transition";
 
@@ -25,129 +26,132 @@ button.show {
 
 .keys {
   clear: both;
-}
 
-.keys .key {
-  display: block;
-  float: left;
-  height: 20px;
-  padding-top: 100px;
-  width: 30px;
-  background: #fff;
-  text-align: center;
-  border: none;
-  border-right: 1px solid #000;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  margin: 0;
-  position: relative;
-  overflow: visible;
-  font-size: 12px;
-}
+  & .key {
+    display: block;
+    float: left;
+    height: 20px;
+    padding-top: 100px;
+    width: 30px;
+    background: #fff;
+    text-align: center;
+    border: none;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin: 0;
+    position: relative;
+    overflow: visible;
+    font-size: 12px;
 
-.keys .key.blk {
-  border: none;
-  width: 20px;
-  padding-top: 50px;
-  height: 20px;
-  background: #000;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  right: -10px;
-  z-index: 1;
-}
+    &.blk {
+      border: none;
+      width: 20px;
+      padding-top: 50px;
+      height: 20px;
+      background: #000;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      right: -10px;
+      z-index: 1;
 
-.keys .key.active {
-  background: #3498db !important;
-}
+      &.active {
+        background: #2980b9 !important;
+      }
 
-.keys .key.blk.active {
-  background: #2980b9 !important;
-}
+    }
 
-.keys .key:first-child {
-  border-left: 1px solid #000;
+    &.active {
+      background: #3498db !important;
+    }
+
+    &:first-child {
+      border-left: 1px solid #000;
+    }
+
+  }
+
 }
 
 .fretboard {
   margin-top: 20px;
-}
 
-.string {
-  clear: both;
-}
+  & .string {
+    clear: both;
+  }
 
-.fret {
-  float: left;
-  width: 70px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  background: #bdc3c7;
-  margin: 0 2px 2px 0;
-}
+  & .fret {
+    float: left;
+    width: 70px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #bdc3c7;
+    margin: 0 2px 2px 0;
 
-.fret span {
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  border-radius: 10px;
-  font-size: 10px;
-  line-height: 20px;
-  text-align: center;
-  color: #fff;
-}
+    & span {
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+      @include border-radius(10px);
+      font-size: 10px;
+      line-height: 20px;
+      text-align: center;
+      color: #fff;
 
-.fret span.lowlight {
-  background: #fff;
-}
+      &.lowlight {
+        background: #fff;
+      }
 
-.fret span.highlight {
-  background: #f39c12;
-}
+      &.highlight {
+        background: #f39c12;
+      }
 
-.fret span.root {
-  background: #e74c3c;
-}
+      &.root {
+        background: #e74c3c;
+      }
 
-.fret[data-fret="0"] {
-  width: 30px;
-}
+    }
 
-.fret[data-fret="0"],
-.fret[data-fret="3"],
-.fret[data-fret="5"],
-.fret[data-fret="7"],
-.fret[data-fret="9"],
-.fret[data-fret="12"],
-.fret[data-fret="15"],
-.fret[data-fret="17"],
-.fret[data-fret="19"],
-.fret[data-fret="22"] {
-  background: #95a5a6;
+    &[data-fret="0"] {
+      width: 30px;
+    }
+
+    $highlight-frets: (0,3,5,7,9,12,15,17,19,22);
+    @for $i from 0 to length($highlight-frets) {
+      &[data-fret="#{nth($highlight-frets, $i+1)}"] {
+        background: #95a5a6;
+      }
+
+    }
+
+  }
+
 }
 
 .combos {
   margin-top: 20px;
-}
 
-.combos li {
-  float: left;
-}
+  & li {
+    float: left;
 
-.combos li button {
-  border: none;
-  padding: 15px;
-  outline: none;
-}
+    & button {
+      border: none;
+      padding: 15px;
+      outline: none;
 
-.combos li button:hover {
-  cursor: pointer;
-}
+      &:hover {
+        cursor: pointer;
+      }
 
-.combos li button.active {
-  background: #3498db;
+      &.active {
+        background: #3498db;
+      }
+    }
+
+  }
+
 }
 
 .clear {
