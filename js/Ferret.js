@@ -79,8 +79,8 @@ Ferret = function () {
             return false;
         }
 
-        //skips more than one string
-        if (last.string - poss.string > 1) {
+        //skips more than 2 strings
+        if (last.string - poss.string > 2) {
             return false;
         }
 
