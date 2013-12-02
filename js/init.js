@@ -133,6 +133,11 @@ $(function () {
         });
     });
 
+    Mousetrap.bind(['esc'], function (e) {
+        $('.keys .key').removeClass('active');
+        showCombos();
+    });
+
     showCombos();
 
 });
