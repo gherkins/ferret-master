@@ -45,6 +45,10 @@ button.show {
     overflow: visible;
     font-size: 12px;
 
+    &:hover{
+      cursor: pointer;
+    }
+
     &.blk {
       border: none;
       width: 20px;
@@ -60,7 +64,6 @@ button.show {
       &.active {
         background: #2980b9 !important;
       }
-
     }
 
     &.active {
@@ -84,7 +87,7 @@ button.show {
 
   & .fret {
     float: left;
-    width: 70px;
+    width: 5%;
     height: 20px;
     line-height: 20px;
     text-align: center;
@@ -135,13 +138,15 @@ button.show {
   margin-top: 20px;
 
   & li {
-    float: left;
+    display: inline-block;
     margin-right: 5px;
     margin-bottom: 40px;
 
     & button {
       border: none;
-      padding: 15px;
+      width: 30px;
+      height: 30px;
+      padding: 0;
       outline: none;
       margin: 0;
       background: #bdc3c7;
@@ -154,21 +159,25 @@ button.show {
         background: #3498db;
       }
     }
-
   }
-
 }
 
 .clear {
   clear: both;
 }
 
-h1 {
+h1, h2 {
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
   color: #fff;
   margin-bottom: 20px;
+}
+
+h2 {
+  text-transform: none;
+  font-size: 18px;
+  font-weight: normal;
 }
 
 p {

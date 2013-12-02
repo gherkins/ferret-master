@@ -24,6 +24,7 @@ button.show { margin-top: 20px; font-size: 18px; height: 40px; width: 435px; }
 
 .keys { clear: both; }
 .keys .key { display: block; float: left; height: 20px; padding-top: 100px; width: 30px; background: #fff; text-align: center; border: none; border-right: 1px solid #000; border-top: 1px solid #000; border-bottom: 1px solid #000; margin: 0; position: relative; overflow: visible; font-size: 12px; }
+.keys .key:hover { cursor: pointer; }
 .keys .key.blk { border: none; width: 20px; padding-top: 50px; height: 20px; background: #000; color: #fff; position: absolute; top: 0; right: -10px; z-index: 1; }
 .keys .key.blk.active { background: #2980b9 !important; }
 .keys .key.active { background: #3498db !important; }
@@ -31,7 +32,7 @@ button.show { margin-top: 20px; font-size: 18px; height: 40px; width: 435px; }
 
 .fretboard { margin-top: 20px; }
 .fretboard .string { clear: both; }
-.fretboard .fret { float: left; width: 70px; height: 20px; line-height: 20px; text-align: center; background: #bdc3c7; margin: 0 2px 2px 0; }
+.fretboard .fret { float: left; width: 5%; height: 20px; line-height: 20px; text-align: center; background: #bdc3c7; margin: 0 2px 2px 0; }
 .fretboard .fret span { height: 20px; width: 20px; display: inline-block; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; font-size: 10px; line-height: 20px; text-align: center; color: #fff; }
 .fretboard .fret span.lowlight { background: #fff; }
 .fretboard .fret span.highlight { background: #f39c12; }
@@ -49,13 +50,15 @@ button.show { margin-top: 20px; font-size: 18px; height: 40px; width: 435px; }
 .fretboard .fret[data-fret="22"] { background: #95a5a6; }
 
 .combos { margin-top: 20px; }
-.combos li { float: left; margin-right: 5px; margin-bottom: 40px; }
-.combos li button { border: none; padding: 15px; outline: none; margin: 0; background: #bdc3c7; }
+.combos li { display: inline-block; margin-right: 5px; margin-bottom: 40px; }
+.combos li button { border: none; width: 30px; height: 30px; padding: 0; outline: none; margin: 0; background: #bdc3c7; }
 .combos li button:hover { cursor: pointer; }
 .combos li button.active { background: #3498db; }
 
 .clear { clear: both; }
 
-h1 { font-size: 30px; font-weight: bold; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+h1, h2 { font-size: 30px; font-weight: bold; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+
+h2 { text-transform: none; font-size: 18px; font-weight: normal; }
 
 p { color: #fff; margin-bottom: 20px; line-height: 20px; }

@@ -60,7 +60,7 @@ $(function () {
 
         $('ul.combos').html('');
         $(combos).each(function (index) {
-            $('<li><button data-index="' + index + '"></button></li>').appendTo($('ul.combos'));
+            $('<li><button data-index="' + index + '">'+(index + 1)+'</button></li>').appendTo($('ul.combos'));
         });
         $('ul.combos li:first-child button').click();
 
