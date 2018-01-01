@@ -5,7 +5,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38888541-4"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-38888541-4');
@@ -20,85 +24,87 @@
 
 <iframe src="http://web-development.cc/footer/footer.html" style=" border:none; height: 40px; width: 100%;"></iframe>
 
-<div id="share"></div>
+<div class="container">
 
-<h1>Fret Master</h1>
+    <h1>Fret Master</h1>
 
-<h2>Piano-to-Fretboard-to-Brain-Converter</h2>
+    <h2>Piano-to-Fretboard-to-Brain-Converter</h2>
 
-<div class="keys">
+    <div class="keys">
 
-    <div class="key" data-note="C" data-key="81">
-        <div class="key blk" data-note="C#" data-key="50"></div>
+        <div class="key" data-note="C" data-key="81">
+            <div class="key blk" data-note="C#" data-key="50"></div>
+        </div>
+
+        <div class="key" data-note="D" data-key="87">
+            <div class="key blk" data-note="D#" data-key="51"></div>
+        </div>
+
+        <div class="key" data-note="E" data-key="69"></div>
+        <div class="key" data-note="F" data-key="82">
+            <div class="key blk" data-note="F#" data-key="53"></div>
+        </div>
+
+        <div class="key" data-note="G" data-key="84">
+            <div class="key blk" data-note="G#" data-key="54"></div>
+        </div>
+
+        <div class="key active" data-note="A" data-key="90">
+            <div class="key blk" data-note="A#" data-key="55"></div>
+        </div>
+
+        <div class="key" data-note="B" data-key="85"></div>
+
+        <div class="key active" data-note="C" data-key="89">
+            <div class="key blk" data-note="C#" data-key="83"></div>
+        </div>
+
+        <div class="key active" data-note="D" data-key="88">
+            <div class="key blk active" data-note="D#" data-key="68"></div>
+        </div>
+
+        <div class="key active" data-note="E" data-key="67"></div>
+        <div class="key" data-note="F" data-key="86">
+            <div class="key blk" data-note="F#" data-key="71"></div>
+        </div>
+
+        <div class="key active" data-note="G" data-key="66">
+            <div class="key blk" data-note="G#" data-key="72"></div>
+        </div>
+
+        <div class="key active" data-note="A" data-key="78">
+            <div class="key blk" data-note="A#" data-key="74"></div>
+        </div>
+
+        <div class="key" data-note="B" data-key="77"></div>
     </div>
 
-    <div class="key" data-note="D" data-key="87">
-        <div class="key blk" data-note="D#" data-key="51"></div>
-    </div>
+    <div class="clear"></div>
 
-    <div class="key" data-note="E" data-key="69"></div>
-    <div class="key" data-note="F" data-key="82">
-        <div class="key blk" data-note="F#" data-key="53"></div>
-    </div>
+    <div class="fretboard"></div>
 
-    <div class="key" data-note="G" data-key="84">
-        <div class="key blk" data-note="G#" data-key="54"></div>
-    </div>
+    <div class="clear"></div>
 
-    <div class="key active" data-note="A" data-key="90">
-        <div class="key blk" data-note="A#" data-key="55"></div>
-    </div>
+    <ul class="combos"></ul>
 
-    <div class="key" data-note="B" data-key="85"></div>
+    <div class="clear"></div>
 
-    <div class="key active" data-note="C" data-key="89">
-        <div class="key blk" data-note="C#" data-key="83"></div>
-    </div>
+    <p>
+        Red dots are the root note (lowest note).
+    </p>
 
-    <div class="key active" data-note="D" data-key="88">
-        <div class="key blk active" data-note="D#" data-key="68"></div>
-    </div>
+    <p>
+        Controls:<br>
+        Use the q,we,r,t,y... keys to activate piano keys,<br>
+        esc. to reset the piano,<br>
+        left &amp; right keys to skip through the results.
+    </p>
 
-    <div class="key active" data-note="E" data-key="67"></div>
-    <div class="key" data-note="F" data-key="86">
-        <div class="key blk" data-note="F#" data-key="71"></div>
-    </div>
+    <p>
+        Have fun practicing!
+    </p>
 
-    <div class="key active" data-note="G" data-key="66">
-        <div class="key blk" data-note="G#" data-key="72"></div>
-    </div>
-
-    <div class="key active" data-note="A" data-key="78">
-        <div class="key blk" data-note="A#" data-key="74"></div>
-    </div>
-
-    <div class="key" data-note="B" data-key="77"></div>
 </div>
-
-<div class="clear"></div>
-
-<div class="fretboard"></div>
-
-<div class="clear"></div>
-
-<ul class="combos"></ul>
-
-<div class="clear"></div>
-
-<p>
-    Red dots are the root note (lowest note).
-</p>
-
-<p>
-    Controls:<br>
-    Use the q,we,r,t,y... keys to activate piano keys,<br>
-    esc. to reset the piano,<br>
-    left &amp; right keys to skip through the results.
-</p>
-
-<p>
-    Have fun practicing!
-</p>
 
 <script id="fretboard-template" type="text/x-handlebars-template">
     {{#for 1 7 1}}
